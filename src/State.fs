@@ -22,16 +22,11 @@ let urlUpdate (result: Option<Page>) model =
       { model with currentPage = page }, []
 
 let init result =
-  let (home, homeCmd) = Home.State.init()
   let (model, cmd) =
     urlUpdate result
-      { currentPage = Home
-        home = home }
-  model, Cmd.batch [ cmd
-                     Cmd.map HomeMsg homeCmd ]
+      { currentPage = Home }
+  model, cmd
 
 let update msg model =
   match msg with
-  | HomeMsg msg ->
-      let (home, homeCmd) = Home.State.update msg model.home
-      { model with home = home }, Cmd.map HomeMsg homeCmd
+  | NoOp -> model, []

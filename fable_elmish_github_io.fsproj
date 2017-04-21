@@ -3,13 +3,14 @@
     <TargetFramework>netstandard1.6</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <!-- Libs -->
+    <Compile Include="src/Libs/Fable.Import.Marked.fs" />
+    <Compile Include="src/Libs/Fable.Import.PrismJS.fs" />
     <!-- Global to the app -->
     <Compile Include="src/Global.fs" />
     <!-- About -->
     <Compile Include="src/About/View.fs" />
     <!-- Home -->
-    <Compile Include="src/Home/Types.fs" />
-    <Compile Include="src/Home/State.fs" />
     <Compile Include="src/Home/View.fs" />
     <!-- Navbar -->
     <Compile Include="src/Navbar/View.fs" />

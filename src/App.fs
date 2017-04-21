@@ -12,6 +12,20 @@ open App.State
 open Global
 
 importAll "../sass/main.sass"
+importAll "../css/prism.min.css"
+
+[<Emit("Prism.languages.fsharp")>]
+let prismFSharp = ""
+
+// Configure markdown parser
+let options =
+  createObj [
+    "highlight" ==> fun code -> PrismJS.Globals.Prism.highlight(code, unbox prismFSharp)
+    "langPrefix" ==> "language-"
+  ]
+
+Marked.Globals.marked.setOptions(unbox options)
+|> ignore
 
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
@@ -40,7 +54,7 @@ let root model dispatch =
   let pageHtml =
     function
     | Page.About -> About.View.root
-    | Home -> Home.View.root model.home (HomeMsg >> dispatch)
+    | Home -> Home.View.root
 
   div
     []
@@ -51,7 +65,13 @@ let root model dispatch =
             [ Navbar.View.root ] ]
       div
         [ ]
-        [ Header.View.root model.currentPage ] ]
+        [ Header.View.root model.currentPage
+          div
+            [ ClassName "section" ]
+            [ div
+                [ ClassName "container" ]
+                [ pageHtml model.currentPage ] ] ] ]
+
 
 open Elmish.React
 open Elmish.Debug

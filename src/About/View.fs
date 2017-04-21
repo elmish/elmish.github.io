@@ -1,14 +1,25 @@
 module About.View
 
+open Fable.Import
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
+open Global
+
+let markdownText =
+  "
+# About
+
+This website is written with:
+
+- [Fable](http://fable.io/) a transpiler F# to Javascript.
+- [Elmish](https://github.com/fable-elmish/elmish) an Elm-like abstractions for F# applications targeting Fable.
+- [Bulma](http://bulma.io/) a modern CSS framework based on Flexbox.
+- [Marked](https://github.com/chjj/marked) a markdown parser and compiler.
+- [PrismJS](http://prismjs.com/) a lightweight, extensible syntax highlighter.
+  "
 
 let root =
   div
-    [ ClassName "content" ]
-    [ h1
-        [ ]
-        [ str "About page" ]
-      p
-        [ ]
-        [ str "This template is a simple application build with Fable + Elmish + React." ] ]
+    [ ClassName "content"
+      DangerouslySetInnerHTML { __html = Marked.Globals.marked.parse(markdownText) } ]
+    [ ]
