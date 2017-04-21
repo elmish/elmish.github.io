@@ -1,0 +1,8 @@
+# Build & deps
+node_modules/
+bin/
+obj/
+
+# Bundles
+bundle.js
+bundle.js.map
