@@ -30,5 +30,9 @@ let root =
         [ ClassName "nav-left" ]
         [ h1
             [ ClassName "nav-item is-brand title is-4" ]
-            [ str "Elmish" ] ]
+            [ img
+                [ Src "logo.png"
+                  Alt "Elmish logo"
+                  Style [ MarginRight "10px" ] ]
+              str "Elmish" ] ]
       navButtons ]

@@ -1,4 +1,4 @@
-module Header.View
+module Docs.Viewer.View
 
 open Fable.Core
 open Fable.Helpers.React
@@ -11,10 +11,14 @@ let footerLinkItem menuLink currentPage =
     match currentPage with
     | Home | About ->
         menuLink.destination = currentPage
-    | Docs _ ->
-        match menuLink.destination with
-        | Docs _ -> true
-        | _ -> false
+    // | Sample _ ->
+    //     match menuLink.Route with
+    //     | Sample  _ -> true
+    //     | _ -> false
+    // | Docs _ ->
+    //     match menuLink.Route with
+    //     | Docs _ -> true
+    //     | _ -> false
 
   li
     [ classList [ "is-active", isCurrentPage ] ]
@@ -37,8 +41,6 @@ let footer model =
             [ footerLinks
                 [ { text = "Home"
                     destination = Page.Home }
-                  { text = "Docs"
-                    destination = (Page.Docs DocsPages.Index) }
                   { text = "About"
                     destination = Page.About } ]
                 model ] ] ]
@@ -58,9 +60,10 @@ let root (model: Page) =
                           [ ClassName "title" ]
                           [ str "Documentation"]
                         h2
-                          [ ClassName "subtitle" ]
-                          [ str "Everything you need to create a website using "
-                            strong
-                              []
-                              [ str "Elmish" ] ] ] ] ] ]
+                          [ ClassName "subtitle"
+                            DangerouslySetInnerHTML {
+                              __html = "Everything you need to create a website using <strong>Elmish<strong>"
+                            }
+                          ]
+                          [] ] ] ] ]
         footer model ]

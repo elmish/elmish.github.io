@@ -12,6 +12,13 @@
     <Compile Include="src/About/View.fs" />
     <!-- Home -->
     <Compile Include="src/Home/View.fs" />
+    <!-- Docs -->
+    <Compile Include="src/Docs/Index/Types.fs" />
+    <Compile Include="src/Docs/Index/State.fs" />
+    <Compile Include="src/Docs/Index/View.fs" />
+    <Compile Include="src/Docs/Viewer/Types.fs" />
+    <Compile Include="src/Docs/Viewer/State.fs" />
+    <Compile Include="src/Docs/Viewer/View.fs" />
     <!-- Navbar -->
     <Compile Include="src/Navbar/View.fs" />
     <!-- Header -->

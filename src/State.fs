@@ -11,6 +11,8 @@ let pageParser: Parser<Page->Page,Page> =
   oneOf [
     map About (s "about")
     map Home (s "home")
+    map (Docs DocsPages.Index) (s "docs")
+    map (fun name -> (DocsPages.Viewer name) |> Docs ) (s "docs" </> str)
   ]
 
 let urlUpdate (result: Option<Page>) model =

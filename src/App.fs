@@ -55,6 +55,10 @@ let root model dispatch =
     function
     | Page.About -> About.View.root
     | Home -> Home.View.root
+    | Docs subPage ->
+        match subPage with
+        | DocsPages.Index -> Docs.Index.View.root
+        //| DocsPages.Viewer name ->
 
   div
     []
