@@ -1,69 +1,50 @@
 module Docs.Viewer.View
 
-open Fable.Core
+open Fable.Import
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Global
 open Types
 
-let footerLinkItem menuLink currentPage =
-  let isCurrentPage =
-    match currentPage with
-    | Home | About ->
-        menuLink.destination = currentPage
-    // | Sample _ ->
-    //     match menuLink.Route with
-    //     | Sample  _ -> true
-    //     | _ -> false
-    // | Docs _ ->
-    //     match menuLink.Route with
-    //     | Docs _ -> true
-    //     | _ -> false
+let root model =
+  let doc =
+    // Catch KeyNotFoundException which occured when the markdown
+    // content have never been fetched yet
+    try
+      model.docsHTML
+      |> List.find(fun x ->
+        x.fileName = model.currentFile
+      )
+      |> Some
+    with _ -> None
 
-  li
-    [ classList [ "is-active", isCurrentPage ] ]
-    [ a
-        [ Href (toHash menuLink.destination) ]
-        [ str menuLink.text] ]
+  let loader =
+    div
+      [ ClassName "has-text-centered" ]
+      [ i
+          [ ClassName "fa fa-spinner fa-pulse fa-3x fa-fw" ]
+          []
+      ]
 
-let footerLinks items currentPage =
-    ul
-      []
-      (items |> List.map(fun x -> footerLinkItem x currentPage))
-
-let footer model =
-  div
-    [ ClassName "hero-foot" ]
-    [ div
-        [ ClassName "container" ]
-        [ nav
-            [ ClassName "tabs is-boxed" ]
-            [ footerLinks
-                [ { text = "Home"
-                    destination = Page.Home }
-                  { text = "About"
-                    destination = Page.About } ]
-                model ] ] ]
-
-let root (model: Page) =
-    section
-      [ ClassName "hero is-primary" ]
-      [ div
-          [ ClassName "hero-body" ]
-          [ div
-              [ ClassName "container" ]
+  let html =
+    match doc with
+    | None -> loader
+    | Some doc ->
+        match doc.state with
+        | Available ->
+            div
+              [ DangerouslySetInnerHTML {
+                  __html = Marked.Globals.marked.parse(doc.html)
+                } ]
+              [ ]
+        | Pending -> loader
+        | State.Error ->
+            article
+              [ ClassName "message is-danger" ]
               [ div
-                  [ ClassName "columns is-vcentered" ]
-                  [ div
-                      [ ClassName "column" ]
-                      [ h1
-                          [ ClassName "title" ]
-                          [ str "Documentation"]
-                        h2
-                          [ ClassName "subtitle"
-                            DangerouslySetInnerHTML {
-                              __html = "Everything you need to create a website using <strong>Elmish<strong>"
-                            }
-                          ]
-                          [] ] ] ] ]
-        footer model ]
+                  [ ClassName "message-body" ]
+                  [ str "Error" ] ]
+
+  div
+    [ ClassName "content" ]
+    [ html ]

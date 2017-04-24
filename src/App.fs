@@ -58,7 +58,7 @@ let root model dispatch =
     | Docs subPage ->
         match subPage with
         | DocsPages.Index -> Docs.Index.View.root
-        //| DocsPages.Viewer name ->
+        | DocsPages.Viewer name -> Docs.Viewer.View.root model.docsViewer
 
   div
     []

@@ -1,12 +1,11 @@
 module Global
 
 open Fable.Core
-
+open Fable.Import
 
 type DocsPages =
   | Index
   | Viewer of string
-
 
 type Page =
   | Home
@@ -29,7 +28,7 @@ type DangerousInnerHtml =
 #if DEV
 let rawUrl = sprintf "http://%s" Browser.location.host
 #else
-let rawUrl = "https://raw.githubusercontent.com/fable-compiler/fable-arch/gh-pages/"
+let rawUrl = "https://raw.githubusercontent.com/fable-compiler/fable-arch/gh-pages"
 #endif
 
 let createDocFilesDirectoryURL fileName =
