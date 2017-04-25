@@ -42,8 +42,13 @@ let root model =
             article
               [ ClassName "message is-danger" ]
               [ div
-                  [ ClassName "message-body" ]
-                  [ str "Error" ] ]
+                  [ ClassName "message-body has-text-centered" ]
+                  [ str "Sorry an error occured."
+                    br [ ]
+                    str "If the problem persist please "
+                    a
+                      [ Href "https://github.com/fable-elmish/fable-elmish.github.io" ]
+                      [ str "open an issue." ] ] ]
 
   div
     [ ClassName "content" ]
