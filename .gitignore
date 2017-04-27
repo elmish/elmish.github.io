@@ -3,6 +3,5 @@ node_modules/
 bin/
 obj/
 
-# Bundles
-bundle.js
-bundle.js.map
+# Ignore webpack generated files
+dist/

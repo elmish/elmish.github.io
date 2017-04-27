@@ -18,7 +18,7 @@ module.exports = {
   devtool: "source-map",
   entry: resolve('./fable_elmish_github_io.fsproj'),
   output: {
-    filename: 'bundle.js',
+    filename: 'dist/bundle.js',
     path: resolve('./public'),
   },
   devServer: {
@@ -58,10 +58,20 @@ module.exports = {
           fallbackLoader: "style-loader",
           loader: "css-loader!sass-loader",
         }),
+      },
+      {
+        test: /\.(jpe|jpg|woff|woff2|eot|ttf|svg)(\?.*$|$)/,
+        use: {
+          loader: 'file-loader',
+          query: {
+            name: "dist/fonts/[name].[ext]",
+            publicPath: "../"
+          }
+        },
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin("styles.css")
+    new ExtractTextPlugin("dist/styles.css")
   ]
 };

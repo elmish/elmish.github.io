@@ -13,9 +13,13 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "fable-core": "^1.0.0-narumi-914",
+    "font-awesome": "^4.7.0",
+    "marked": "^0.3.6",
+    "prismjs": "^1.6.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "remotedev": "^0.2.7"
+    "remotedev": "^0.2.7",
+    "sass-font-awesome": "^1.0.2"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -32,9 +36,11 @@
     "fable-loader": "^1.0.0-narumi-912",
     "fable-powerpack": "^1.0.0-narumi-5",
     "fable-react": "^1.0.0-narumi-6",
+    "file-loader": "^0.11.1",
     "node-sass": "^4.5.2",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
+    "url-loader": "^0.5.8",
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.5"
   }

@@ -11,8 +11,15 @@ open Types
 open App.State
 open Global
 
+// Bulma + Docs site css
 importAll "../sass/main.sass"
+// Prism css
 importAll "../css/prism.min.css"
+
+// Import prismjs lib (F# support)
+importAll "prismjs/components/prism-core.min.js"
+importAll "prismjs/components/prism-clike.min.js"
+importAll "prismjs/components/prism-fsharp.min.js"
 
 [<Emit("Prism.languages.fsharp")>]
 let prismFSharp = ""
