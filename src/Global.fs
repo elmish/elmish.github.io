@@ -28,7 +28,7 @@ type DangerousInnerHtml =
 #if DEV
 let rawUrl = sprintf "http://%s" Browser.location.host
 #else
-let rawUrl = "https://raw.githubusercontent.com/fable-compiler/fable-arch/gh-pages"
+let rawUrl = "https://raw.githubusercontent.com/fable-elmish/fable-elmish.github.io/master/"
 #endif
 
 let createDocFilesDirectoryURL fileName =
