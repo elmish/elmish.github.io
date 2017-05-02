@@ -37,25 +37,6 @@ Marked.Globals.marked.setOptions(unbox options)
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
 
-let menuItem label page currentPage =
-    li
-      [ ]
-      [ a
-          [ classList [ "is-active", page = currentPage ]
-            Href (toHash page) ]
-          [ str label ] ]
-
-let menu currentPage =
-  aside
-    [ ClassName "menu" ]
-    [ p
-        [ ClassName "menu-label" ]
-        [ str "General" ]
-      ul
-        [ ClassName "menu-list" ]
-        [ menuItem "Home" Home currentPage
-          menuItem "About" Page.About currentPage ] ]
-
 let root model dispatch =
 
   let pageHtml =
@@ -66,6 +47,9 @@ let root model dispatch =
         match subPage with
         | DocsPages.Index -> Docs.Index.View.root
         | DocsPages.Viewer name -> Docs.Viewer.View.root model.docsViewer
+    | Samples subPage ->
+        match subPage with
+        | SamplesPages.Index -> Sample.Index.View.root
 
   div
     []

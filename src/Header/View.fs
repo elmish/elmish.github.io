@@ -15,6 +15,10 @@ let footerLinkItem menuLink currentPage =
         match menuLink.destination with
         | Docs _ -> true
         | _ -> false
+    | Samples _ ->
+        match menuLink.destination with
+        | Samples _ -> true
+        | _ -> false
 
   li
     [ classList [ "is-active", isCurrentPage ] ]
@@ -39,6 +43,8 @@ let footer model =
                     destination = Page.Home }
                   { text = "Docs"
                     destination = (Page.Docs DocsPages.Index) }
+                  { text = "Samples"
+                    destination = (Page.Samples SamplesPages.Index) }
                   { text = "About"
                     destination = Page.About } ]
                 model ] ] ]

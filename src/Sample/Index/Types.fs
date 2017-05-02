@@ -2,19 +2,23 @@ module Sample.Index.Types
 
 open Global
 
-type TileInfo =
+type SampleUrl =
+  { url: string
+    height: int }
+
+let defaultSampleUrl =
+  { url = ""
+    height = 300 }
+
+type SampleInfo =
   { title: string
     description: string
-    fileName: string }
+    url: SampleUrl }
 
-type Tile =
-  | Tile of TileInfo
+type Sample =
+  | Tile of SampleInfo
   | Placeholder
 
 type SectionInfo =
-  { left: Tile list
-    right: Tile list }
-
-  static member Empty =
-    { left = []
-      right = [] }
+  { title: string
+    samples: SampleInfo list }

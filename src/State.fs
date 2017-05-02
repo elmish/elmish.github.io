@@ -11,8 +11,11 @@ let pageParser: Parser<Page->Page,Page> =
   oneOf [
     map About (s "about")
     map Home (s "home")
+    map Home (s "")
     map (Docs DocsPages.Index) (s "docs")
     map (fun name -> name |> DocsPages.Viewer |> Docs) (s "docs" </> str)
+    map (Samples SamplesPages.Index) (s "samples")
+    map (fun url height -> (url, height) |> SamplesPages.Viewer |> Samples) (s "samples" <?> stringParam "url" <?> intParam "height")
   ]
 
 let urlUpdate (result: Option<Page>) model =
@@ -21,6 +24,7 @@ let urlUpdate (result: Option<Page>) model =
     console.error("Error parsing url")
     model,Navigation.modifyUrl (toHash model.currentPage)
   | Some page ->
+      Fable.Import.Browser.console.log page
       let msg =
         match page with
         | Docs subPage ->

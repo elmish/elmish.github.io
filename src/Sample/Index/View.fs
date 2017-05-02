@@ -16,7 +16,8 @@ let tileDocs tile =
             [ p
                 [ ClassName "title" ]
                 [ a
-                    [ Href (toHash (Docs (DocsPages.Viewer info.fileName))) ]
+                    [ ]
+                    // [ Href (toHash (Docs (DocsPages.Viewer info.url))) ]
                     [ str info.title ] ]
               p
                 [ ClassName "subtitle" ]
@@ -34,42 +35,85 @@ let tileVertical tileList =
     [ ClassName "tile is-vertical is-6" ]
     (tileList |> List.map tileDocs)
 
-let docsTiles tileList =
-  let rec divideTiles tiles index sectionInfo =
+let renderSection sectionInfo =
+  let rec divideTiles tiles index (left, right) =
     match tiles with
     | tile::trail ->
         let sectionInfo' =
           match index % 2 with
           | 0 ->
-              { sectionInfo with
-                  left = sectionInfo.left @ [ Tile tile] }
+              left @ [ Tile tile], right
           | 1 ->
-              { sectionInfo with
-                      right = sectionInfo.right @ [ Tile tile] }
+              left, right @ [ Tile tile]
           | _ -> failwith "Should not happened"
         divideTiles trail (index + 1) sectionInfo'
     | [] ->
         // Ensure we have the same number of tiles in both columns
         // This prevent to have taller tiles
         if (index % 2) <> 0 then
-          { sectionInfo with
-              right = sectionInfo.right @ [ Placeholder ] }
+          left, right @ [ Placeholder ]
         else
-          sectionInfo
+          left, right
 
-  let sections = divideTiles tileList 0 SectionInfo.Empty
+  let (leftSection, rightSection) = divideTiles sectionInfo.samples 0 ([],[])
+
   div
-    [ ClassName "tile is-ancestor" ]
-    [ tileVertical sections.left
-      tileVertical sections.right ]
+    [ ]
+    [ h1
+        [ ClassName "title" ]
+        [ str sectionInfo.title ]
+      div
+        [ ClassName "tile is-ancestor" ]
+        [ tileVertical leftSection
+          tileVertical rightSection ] ]
 
 let root =
   div
-    [ ClassName "section" ]
-    [ docsTiles
-        [ { title = "Hot Module Replacement (HMR)"
-            description = "Hot Module Reloading, or Replacement, is a feature where you inject update modules in a running application.
-                        This opens up the possibility to time travel in the application without losing context.
-                        It also makes it easier to try out changes in the functionality while retaining the state of the application."
-            fileName = "getting_started"
-          } ] ]
+    [ ]
+    [ renderSection {
+        title = "Beginner"
+        samples =
+          [
+            { title = "Title"
+              description = "Description"
+              url = defaultSampleUrl }
+            { title = "Title"
+              description = "Description"
+              url = defaultSampleUrl }
+            { title = "Title"
+              description = "Description"
+              url = defaultSampleUrl }
+          ]
+      }
+      hr []
+      renderSection {
+        title = "Medium"
+        samples =
+          [
+            { title = "Title"
+              description = "Description"
+              url = defaultSampleUrl }
+            { title = "Title"
+              description = "Description"
+              url = defaultSampleUrl }
+            { title = "Title"
+              description = "Description"
+              url = defaultSampleUrl }
+          ]
+      }
+      hr []
+      renderSection {
+        title = "Advanced"
+        samples =
+          [
+            { title = "Title"
+              description = "Description"
+              url = defaultSampleUrl }
+            { title = "Title"
+              description = "Description"
+              url = defaultSampleUrl }
+            { title = "Title"
+              description = "Description"
+              url = defaultSampleUrl }
+          ]
+      } ]
