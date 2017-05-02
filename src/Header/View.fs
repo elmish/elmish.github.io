@@ -42,9 +42,9 @@ let footer model =
                 [ { text = "Home"
                     destination = Page.Home }
                   { text = "Docs"
-                    destination = (Page.Docs DocsPages.Index) }
+                    destination = Page.Docs None }
                   { text = "Samples"
-                    destination = (Page.Samples SamplesPages.Index) }
+                    destination = Page.Samples None }
                   { text = "About"
                     destination = Page.About } ]
                 model ] ] ]

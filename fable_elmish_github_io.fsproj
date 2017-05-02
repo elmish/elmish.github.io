@@ -14,14 +14,12 @@
     <Compile Include="src/Home/View.fs" />
     <!-- Docs -->
     <Compile Include="src/Docs/Index/Types.fs" />
-    <Compile Include="src/Docs/Index/State.fs" />
     <Compile Include="src/Docs/Index/View.fs" />
     <Compile Include="src/Docs/Viewer/Types.fs" />
     <Compile Include="src/Docs/Viewer/State.fs" />
     <Compile Include="src/Docs/Viewer/View.fs" />
     <!-- Sample -->
     <Compile Include="src/Sample/Index/Types.fs" />
-    <Compile Include="src/Sample/Index/State.fs" />
     <Compile Include="src/Sample/Index/View.fs" />
     <Compile Include="src/Sample/Viewer/Types.fs" />
     <Compile Include="src/Sample/Viewer/State.fs" />

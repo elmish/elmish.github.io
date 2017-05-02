@@ -1,21 +1,23 @@
 module App.State
 
+open Fable.Import.Browser
 open Elmish
 open Elmish.Browser.Navigation
 open Elmish.Browser.UrlParser
-open Fable.Import.Browser
 open Global
 open Types
 
-let pageParser: Parser<Page->Page,Page> =
+
+let pageParser: Parser<Page->Page,_> =
+  let curry f = fun a b -> f (a,b)
   oneOf [
     map About (s "about")
     map Home (s "home")
-    map Home (s "")
-    map (Docs DocsPages.Index) (s "docs")
-    map (fun name -> name |> DocsPages.Viewer |> Docs) (s "docs" </> str)
-    map (Samples SamplesPages.Index) (s "samples")
-    map (fun url height -> (url, height) |> SamplesPages.Viewer |> Samples) (s "samples" <?> stringParam "url" <?> intParam "height")
+    map (Some >> Docs) (s "docs" </> str)
+    map (Docs None) (s "docs")
+    map (curry (Some >> Samples)) (s "samples" </> i32 </> str)
+    map (Samples None) (s "samples")
+    map Home top
   ]
 
 let urlUpdate (result: Option<Page>) model =
@@ -27,11 +29,10 @@ let urlUpdate (result: Option<Page>) model =
       Fable.Import.Browser.console.log page
       let msg =
         match page with
-        | Docs subPage ->
-            match subPage with
-            | DocsPages.Index -> []
-            | DocsPages.Viewer fileName ->
-                Cmd.ofMsg (DocsViewerMsg (Docs.Viewer.Types.SetDoc fileName))
+        | Docs (Some page) ->
+            Cmd.ofMsg (DocsViewerMsg (Docs.Viewer.Types.SetDoc page))
+        | Docs _ ->
+            []
         | _ -> []
       { model with currentPage = page }, msg
 

@@ -43,13 +43,14 @@ let root model dispatch =
     function
     | Page.About -> About.View.root
     | Home -> Home.View.root
-    | Docs subPage ->
-        match subPage with
-        | DocsPages.Index -> Docs.Index.View.root
-        | DocsPages.Viewer name -> Docs.Viewer.View.root model.docsViewer
-    | Samples subPage ->
-        match subPage with
-        | SamplesPages.Index -> Sample.Index.View.root
+    | Docs (Some page) ->
+        Docs.Viewer.View.root model.docsViewer // TODO: use name
+    | Docs _ ->
+        Docs.Index.View.root
+    | Samples (Some (height,url)) ->
+        Sample.Index.View.root // TODO: use height
+    | Samples _ ->
+        Sample.Index.View.root
 
   div
     []
@@ -75,7 +76,7 @@ open Elmish.Debug
 Program.mkProgram init update root
 |> Program.toNavigable (parseHash pageParser) urlUpdate
 |> Program.withReact "elmish-app"
-#if DEBUG
-|> Program.withDebugger
-#endif
+// #if DEBUG
+// |> Program.withDebugger
+// #endif
 |> Program.run

@@ -16,7 +16,7 @@ let tileDocs tile =
             [ p
                 [ ClassName "title" ]
                 [ a
-                    [ Href (toHash (Docs (DocsPages.Viewer info.fileName))) ]
+                    [ Href (toHash (Docs (Some info.fileName))) ]
                     [ str info.title ] ]
               p
                 [ ClassName "subtitle" ]
