@@ -9,7 +9,7 @@ open Fable.Import
 
 let init () =
   { currentFile = ""
-    docsHTML = [] }, []
+    samplesHTML = [] }, []
 
 let update msg model =
   model, []

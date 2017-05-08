@@ -1,4 +1,4 @@
-module Docs.Index.Types
+module Doc.Index.Types
 
 open Global
 

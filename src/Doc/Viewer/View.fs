@@ -1,4 +1,4 @@
-module Docs.Viewer.View
+module Doc.Viewer.View
 
 open Fable.Import
 open Fable.Helpers.React

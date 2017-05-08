@@ -30,24 +30,30 @@ let urlUpdate (result: Option<Page>) model =
       let msg =
         match page with
         | Docs (Some page) ->
-            Cmd.ofMsg (DocsViewerMsg (Docs.Viewer.Types.SetDoc page))
+            Cmd.ofMsg (DocViewerMsg (Doc.Viewer.Types.SetDoc page))
         | Docs _ ->
             []
         | _ -> []
       { model with currentPage = page }, msg
 
 let init result =
-  let (docsViewer, docsViewerCmd) = Docs.Viewer.State.init ()
+  let (docViewer, docViewerCmd) = Doc.Viewer.State.init ()
+  let (sampleViewer, sampleViewerCmd) = Sample.Viewer.State.init ()
   let (model, cmd) =
     urlUpdate result
       { currentPage = Home
-        docsViewer = docsViewer }
+        docViewer = docViewer
+        sampleViewer = sampleViewer }
   model, Cmd.batch [  cmd
-                      Cmd.map DocsViewerMsg docsViewerCmd ]
+                      Cmd.map DocViewerMsg docViewerCmd
+                      Cmd.map SampleViewerMsg sampleViewerCmd ]
 
 let update msg model =
   match msg with
   | NoOp -> model, []
-  | DocsViewerMsg msg ->
-      let (docsViewer, docsViewerCmd) = Docs.Viewer.State.update msg model.docsViewer
-      { model with docsViewer = docsViewer }, Cmd.map DocsViewerMsg docsViewerCmd
+  | DocViewerMsg msg ->
+      let (docViewer, docViewerCmd) = Doc.Viewer.State.update msg model.docViewer
+      { model with docViewer = docViewer }, Cmd.map DocViewerMsg docViewerCmd
+  | SampleViewerMsg msg ->
+      let (sampleViewer, sampleViewerCmd) = Sample.Viewer.State.update msg model.sampleViewer
+      { model with sampleViewer = sampleViewer }, Cmd.map SampleViewerMsg sampleViewerCmd

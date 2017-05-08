@@ -1,4 +1,4 @@
-module Docs.Index.View
+module Doc.Index.View
 
 open Fable.Core
 open Fable.Helpers.React

@@ -7,16 +7,16 @@ type State =
   | Pending
   | Error
 
-type DocHTML =
-  { fileName: string
+type SampleHTML =
+  { url: string
     html: string
     state: State }
 
 type Model =
   { currentFile: string
-    docsHTML: DocHTML list }
+    samplesHTML: SampleHTML list }
 
 type Msg =
-  | SetDoc of string
-  | SetDocHtml of string * string
+  | SetSample of string
+  | SetSampleHtml of string * string
   | Error of string * string

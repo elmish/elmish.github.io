@@ -1,4 +1,4 @@
-module Docs.Viewer.State
+module Doc.Viewer.State
 
 open Elmish
 open Fable.PowerPack

@@ -1,4 +1,4 @@
-module Docs.Viewer.Types
+module Doc.Viewer.Types
 
 open Global
 

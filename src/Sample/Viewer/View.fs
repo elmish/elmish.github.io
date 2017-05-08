@@ -11,9 +11,9 @@ let root model =
     // Catch KeyNotFoundException which occured when the markdown
     // content have never been fetched yet
     try
-      model.docsHTML
+      model.samplesHTML
       |> List.find(fun x ->
-        x.fileName = model.currentFile
+        x.url = model.currentFile
       )
       |> Some
     with _ -> None

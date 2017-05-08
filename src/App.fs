@@ -44,11 +44,11 @@ let root model dispatch =
     | Page.About -> About.View.root
     | Home -> Home.View.root
     | Docs (Some page) ->
-        Docs.Viewer.View.root model.docsViewer // TODO: use name
+        Doc.Viewer.View.root model.docViewer // TODO: use name
     | Docs _ ->
-        Docs.Index.View.root
+        Doc.Index.View.root
     | Samples (Some (height,url)) ->
-        Sample.Index.View.root // TODO: use height
+        Sample.Viewer.View.root model.sampleViewer // TODO: use height
     | Samples _ ->
         Sample.Index.View.root
 
@@ -76,7 +76,7 @@ open Elmish.Debug
 Program.mkProgram init update root
 |> Program.toNavigable (parseHash pageParser) urlUpdate
 |> Program.withReact "elmish-app"
-// #if DEBUG
-// |> Program.withDebugger
-// #endif
+#if DEBUG
+|> Program.withDebugger
+#endif
 |> Program.run

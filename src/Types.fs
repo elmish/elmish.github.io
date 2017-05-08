@@ -4,9 +4,11 @@ open Global
 
 type Msg =
   | NoOp
-  | DocsViewerMsg of Docs.Viewer.Types.Msg
+  | DocViewerMsg of Doc.Viewer.Types.Msg
+  | SampleViewerMsg of Sample.Viewer.Types.Msg
 
 type Model = {
     currentPage: Page
-    docsViewer: Docs.Viewer.Types.Model
+    docViewer: Doc.Viewer.Types.Model
+    sampleViewer: Sample.Viewer.Types.Model
   }
