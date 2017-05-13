@@ -7,7 +7,7 @@ type Page =
   | Home
   | About
   | Docs of string option
-  | Samples of (int * string) option
+  | Samples of string option
 
 let toHash page =
   match page with
@@ -17,8 +17,8 @@ let toHash page =
       sprintf "#docs/%s" name
   | Docs _ ->
       "#docs"
-  | Samples (Some (height,url)) ->
-       sprintf "#samples/%i/%s" height url
+  | Samples (Some sampleKey) ->
+       sprintf "#samples/%s" sampleKey
   | Samples _ ->
       "#samples"
 

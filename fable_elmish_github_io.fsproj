@@ -20,6 +20,7 @@
     <Compile Include="src/Doc/Viewer/View.fs" />
     <!-- Sample -->
     <Compile Include="src/Sample/Index/Types.fs" />
+    <Compile Include="src/Sample/Index/State.fs" />
     <Compile Include="src/Sample/Index/View.fs" />
     <Compile Include="src/Sample/Viewer/Types.fs" />
     <Compile Include="src/Sample/Viewer/State.fs" />

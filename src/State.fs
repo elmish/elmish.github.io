@@ -9,13 +9,12 @@ open Types
 
 
 let pageParser: Parser<Page->Page,_> =
-  let curry f = fun a b -> f (a,b)
   oneOf [
     map About (s "about")
     map Home (s "home")
     map (Some >> Docs) (s "docs" </> str)
     map (Docs None) (s "docs")
-    map (curry (Some >> Samples)) (s "samples" </> i32 </> str)
+    map (Some >> Samples) (s "samples" </> str)
     map (Samples None) (s "samples")
     map Home top
   ]
@@ -26,13 +25,14 @@ let urlUpdate (result: Option<Page>) model =
     console.error("Error parsing url")
     model,Navigation.modifyUrl (toHash model.currentPage)
   | Some page ->
-      Fable.Import.Browser.console.log page
       let msg =
         match page with
         | Docs (Some page) ->
             Cmd.ofMsg (DocViewerMsg (Doc.Viewer.Types.SetDoc page))
         | Docs _ ->
             []
+        | Samples (Some infos) ->
+            Cmd.ofMsg (SampleViewerMsg (Sample.Viewer.Types.SetSample infos))
         | _ -> []
       { model with currentPage = page }, msg
 

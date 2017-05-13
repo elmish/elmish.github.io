@@ -16,7 +16,7 @@ let tileDocs tile =
             [ p
                 [ ClassName "title" ]
                 [ a
-                    [ Href (toHash (Samples (Some (info.url.height, info.url.url)))) ]
+                    [ Href (toHash ((info.sampleKey) |> (Some >> Samples))) ]
                     [ str info.title ] ]
               p
                 [ ClassName "subtitle" ]
@@ -75,13 +75,13 @@ let root =
           [
             { title = "Title"
               description = "Description"
-              url = defaultSampleUrl }
+              sampleKey = "sample-react-calc" }
             { title = "Title"
               description = "Description"
-              url = defaultSampleUrl }
+              sampleKey = "sample-react-calc" }
             { title = "Title"
               description = "Description"
-              url = defaultSampleUrl }
+              sampleKey = "sample-react-calc" }
           ]
       }
       hr []
@@ -91,13 +91,13 @@ let root =
           [
             { title = "Title"
               description = "Description"
-              url = defaultSampleUrl }
+              sampleKey = "sample-react-calc" }
             { title = "Title"
               description = "Description"
-              url = defaultSampleUrl }
+              sampleKey = "sample-react-calc" }
             { title = "Title"
               description = "Description"
-              url = defaultSampleUrl }
+              sampleKey = "sample-react-calc" }
           ]
       }
       hr []
@@ -107,12 +107,12 @@ let root =
           [
             { title = "Title"
               description = "Description"
-              url = defaultSampleUrl }
+              sampleKey = "sample-react-calc" }
             { title = "Title"
               description = "Description"
-              url = defaultSampleUrl }
+              sampleKey = "sample-react-calc" }
             { title = "Title"
               description = "Description"
-              url = defaultSampleUrl }
+              sampleKey = "sample-react-calc" }
           ]
       } ]

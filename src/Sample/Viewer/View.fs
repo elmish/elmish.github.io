@@ -7,13 +7,13 @@ open Global
 open Types
 
 let root model =
-  let doc =
+  let sample =
     // Catch KeyNotFoundException which occured when the markdown
     // content have never been fetched yet
     try
       model.samplesHTML
       |> List.find(fun x ->
-        x.url = model.currentFile
+        x.sampleKey = model.currentFile
       )
       |> Some
     with _ -> None
@@ -27,14 +27,14 @@ let root model =
       ]
 
   let html =
-    match doc with
+    match sample with
     | None -> loader
-    | Some doc ->
-        match doc.state with
+    | Some sample ->
+        match sample.state with
         | Available ->
             div
               [ DangerouslySetInnerHTML {
-                  __html = Marked.Globals.marked.parse(doc.html)
+                  __html = Marked.Globals.marked.parse(sample.html)
                 } ]
               [ ]
         | Pending -> loader
@@ -50,6 +50,49 @@ let root model =
                       [ Href "https://github.com/fable-elmish/fable-elmish.github.io" ]
                       [ str "open an issue." ] ] ]
 
+  // div
+  //   [ ClassName "content" ]
+  //   [ html ]
   div
     [ ClassName "content" ]
-    [ html ]
+    [ div
+        [ ClassName "container" ]
+        [ h1
+            [ ClassName "has-text-centered" ]
+            [ str "Demo" ]
+          div
+            [ ClassName "columns" ]
+            [ div
+                [ ClassName "column is-half is-offset-one-quarter has-text-centered" ]
+                [ a
+                    [ ClassName "button is-primary is-pulled-left"
+                      Href sample.Value.sampleKey
+                      Target "_blank" ]
+                    [ str "Open in tab" ]
+                  a
+                    [ ClassName "button is-pulled-right"
+                      Href ""//(DocGen.githubURL model.CurrentFile)
+                      Target "_blank" ]
+                    [ span
+                        [ ClassName "icon"]
+                        [ i
+                            [ ClassName "fa fa-github" ]
+                            [ ] ]
+                      span
+                        []
+                        [ str "Go to source" ] ]
+                  br []
+                  br []
+                  iframe
+                    [ ClassName "sample-viewer"
+                      Src sample.Value.sampleKey
+                      Style [ Height 300 ] ]
+                    [] ] ]
+          div
+            [ ClassName "content" ]
+            [ h1
+                [ ClassName "has-text-centered" ]
+                [ str "Explanations" ]
+              div
+                [ ClassName "container" ]
+                [ html ] ] ] ]

@@ -2,18 +2,15 @@ module Sample.Index.Types
 
 open Global
 
-type SampleUrl =
-  { url: string
-    height: int }
-
-let defaultSampleUrl =
-  { url = ""
-    height = 300 }
-
 type SampleInfo =
   { title: string
     description: string
-    url: SampleUrl }
+    sampleKey: string }
+
+type SampleReference =
+  { demoUrl: string
+    sourceUrl: string
+    height: int }
 
 type Sample =
   | Tile of SampleInfo

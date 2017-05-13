@@ -8,7 +8,7 @@ type State =
   | Error
 
 type SampleHTML =
-  { url: string
+  { sampleKey: string
     html: string
     state: State }
 
