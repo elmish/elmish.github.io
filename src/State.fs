@@ -12,8 +12,7 @@ let pageParser: Parser<Page->Page,_> =
   oneOf [
     map About (s "about")
     map Home (s "home")
-    map (Some >> Docs) (s "docs" </> str)
-    map (Docs None) (s "docs")
+    map Docs (s "docs")
     map (Some >> Samples) (s "samples" </> str)
     map (Samples None) (s "samples")
     map Home top
@@ -27,33 +26,23 @@ let urlUpdate (result: Option<Page>) model =
   | Some page ->
       let msg =
         match page with
-        | Docs (Some page) ->
-            Cmd.ofMsg (DocViewerMsg (Doc.Viewer.Types.SetDoc page))
-        | Docs _ ->
-            []
         | Samples (Some infos) ->
             Cmd.ofMsg (SampleViewerMsg (Sample.Viewer.Types.SetSample infos))
         | _ -> []
       { model with currentPage = page }, msg
 
 let init result =
-  let (docViewer, docViewerCmd) = Doc.Viewer.State.init ()
   let (sampleViewer, sampleViewerCmd) = Sample.Viewer.State.init ()
   let (model, cmd) =
     urlUpdate result
       { currentPage = Home
-        docViewer = docViewer
         sampleViewer = sampleViewer }
   model, Cmd.batch [  cmd
-                      Cmd.map DocViewerMsg docViewerCmd
                       Cmd.map SampleViewerMsg sampleViewerCmd ]
 
 let update msg model =
   match msg with
   | NoOp -> model, []
-  | DocViewerMsg msg ->
-      let (docViewer, docViewerCmd) = Doc.Viewer.State.update msg model.docViewer
-      { model with docViewer = docViewer }, Cmd.map DocViewerMsg docViewerCmd
   | SampleViewerMsg msg ->
       let (sampleViewer, sampleViewerCmd) = Sample.Viewer.State.update msg model.sampleViewer
       { model with sampleViewer = sampleViewer }, Cmd.map SampleViewerMsg sampleViewerCmd

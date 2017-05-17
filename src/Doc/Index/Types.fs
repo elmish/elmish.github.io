@@ -5,7 +5,7 @@ open Global
 type TileInfo =
   { title: string
     description: string
-    fileName: string }
+    url: string }
 
 type Tile =
   | Tile of TileInfo

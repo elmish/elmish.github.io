@@ -6,16 +6,14 @@ open Fable.Import
 type Page =
   | Home
   | About
-  | Docs of string option
+  | Docs
   | Samples of string option
 
 let toHash page =
   match page with
   | About -> "#about"
   | Home -> "#home"
-  | Docs (Some name) ->
-      sprintf "#docs/%s" name
-  | Docs _ ->
+  | Docs ->
       "#docs"
   | Samples (Some sampleKey) ->
        sprintf "#samples/%s" sampleKey

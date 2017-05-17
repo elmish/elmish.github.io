@@ -13,26 +13,6 @@ open Global
 
 // Bulma + Docs site css
 importAll "../sass/main.sass"
-// Prism css
-importAll "../css/prism.min.css"
-
-// Import prismjs lib (F# support)
-importAll "prismjs/components/prism-core.min.js"
-importAll "prismjs/components/prism-clike.min.js"
-importAll "prismjs/components/prism-fsharp.min.js"
-
-[<Emit("Prism.languages.fsharp")>]
-let prismFSharp = ""
-
-// Configure markdown parser
-let options =
-  createObj [
-    "highlight" ==> fun code -> PrismJS.Globals.Prism.highlight(code, unbox prismFSharp)
-    "langPrefix" ==> "language-"
-  ]
-
-Marked.Globals.marked.setOptions(unbox options)
-|> ignore
 
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
@@ -43,9 +23,7 @@ let root model dispatch =
     function
     | Page.About -> About.View.root
     | Home -> Home.View.root
-    | Docs (Some page) ->
-        Doc.Viewer.View.root model.docViewer // TODO: use name
-    | Docs _ ->
+    | Docs ->
         Doc.Index.View.root
     | Samples (Some sampleKey) ->
         Sample.Viewer.View.root model.sampleViewer // TODO: use height

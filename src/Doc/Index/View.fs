@@ -1,6 +1,7 @@
 module Doc.Index.View
 
 open Fable.Core
+open Fable.Import
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Global
@@ -16,11 +17,14 @@ let tileDocs tile =
             [ p
                 [ ClassName "title" ]
                 [ a
-                    [ Href (toHash (Docs (Some info.fileName))) ]
+                    [ Href info.url ]
                     [ str info.title ] ]
               p
                 [ ClassName "subtitle" ]
-                [ str info.description ] ] ]
+                [ div
+                    [ ClassName "content"
+                      DangerouslySetInnerHTML { __html = (Marked.Globals.marked.parse info.description) } ]
+                    [ ] ] ] ]
   // Render an empty tile
   | Placeholder ->
       div
@@ -67,9 +71,12 @@ let root =
   div
     [ ClassName "section" ]
     [ docsTiles
-        [ { title = "Hot Module Replacement (HMR)"
-            description = "Hot Module Reloading, or Replacement, is a feature where you inject update modules in a running application.
-                        This opens up the possibility to time travel in the application without losing context.
-                        It also makes it easier to try out changes in the functionality while retaining the state of the application."
-            fileName = "getting_started"
+        [ { title = "Elmish"
+            description =
+              """
+Official documentation about elmish.
+
+Elmish is the part responsible of handling your state during the life cicly of your application.
+              """
+            url = "https://fable-elmish.github.io/elmish/"
           } ] ]
