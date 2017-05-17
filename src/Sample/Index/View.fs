@@ -73,8 +73,8 @@ let root =
         title = "Beginner"
         samples =
           [
-            { title = "Title"
-              description = "Description"
+            { title = "Calculator"
+              description = "A simple calculator made with Elmish and React"
               sampleKey = "sample-react-calc" }
           ]
       }
