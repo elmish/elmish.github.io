@@ -26,7 +26,7 @@ let root model dispatch =
     | Docs ->
         Doc.Index.View.root
     | Samples (Some sampleKey) ->
-        Sample.Viewer.View.root model.sampleViewer // TODO: use height
+        Sample.Viewer.View.root sampleKey // TODO: use height
     | Samples _ ->
         Sample.Index.View.root
 

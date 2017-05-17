@@ -76,7 +76,7 @@ let root =
               """
 Official documentation about elmish.
 
-Elmish is the part responsible of handling your state during the life cicly of your application.
+Elmish is the part responsible of handling your **state** during the **life cicle** of your application.
               """
             url = "https://fable-elmish.github.io/elmish/"
           } ] ]

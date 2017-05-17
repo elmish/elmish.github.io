@@ -76,43 +76,18 @@ let root =
             { title = "Title"
               description = "Description"
               sampleKey = "sample-react-calc" }
-            { title = "Title"
-              description = "Description"
-              sampleKey = "sample-react-calc" }
-            { title = "Title"
-              description = "Description"
-              sampleKey = "sample-react-calc" }
           ]
       }
-      hr []
-      renderSection {
-        title = "Medium"
-        samples =
-          [
-            { title = "Title"
-              description = "Description"
-              sampleKey = "sample-react-calc" }
-            { title = "Title"
-              description = "Description"
-              sampleKey = "sample-react-calc" }
-            { title = "Title"
-              description = "Description"
-              sampleKey = "sample-react-calc" }
-          ]
-      }
-      hr []
-      renderSection {
-        title = "Advanced"
-        samples =
-          [
-            { title = "Title"
-              description = "Description"
-              sampleKey = "sample-react-calc" }
-            { title = "Title"
-              description = "Description"
-              sampleKey = "sample-react-calc" }
-            { title = "Title"
-              description = "Description"
-              sampleKey = "sample-react-calc" }
-          ]
-      } ]
+      // hr []
+      // renderSection {
+      //   title = "Medium"
+      //   samples =
+      //     [ ]
+      // }
+      // hr []
+      // renderSection {
+      //   title = "Advanced"
+      //   samples =
+      //     [ ]
+      // }
+      ]

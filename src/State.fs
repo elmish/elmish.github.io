@@ -24,25 +24,14 @@ let urlUpdate (result: Option<Page>) model =
     console.error("Error parsing url")
     model,Navigation.modifyUrl (toHash model.currentPage)
   | Some page ->
-      let msg =
-        match page with
-        | Samples (Some infos) ->
-            Cmd.ofMsg (SampleViewerMsg (Sample.Viewer.Types.SetSample infos))
-        | _ -> []
-      { model with currentPage = page }, msg
+      { model with currentPage = page }, []
 
 let init result =
-  let (sampleViewer, sampleViewerCmd) = Sample.Viewer.State.init ()
   let (model, cmd) =
     urlUpdate result
-      { currentPage = Home
-        sampleViewer = sampleViewer }
-  model, Cmd.batch [  cmd
-                      Cmd.map SampleViewerMsg sampleViewerCmd ]
+      { currentPage = Home }
+  model, Cmd.batch [  cmd ]
 
 let update msg model =
   match msg with
   | NoOp -> model, []
-  | SampleViewerMsg msg ->
-      let (sampleViewer, sampleViewerCmd) = Sample.Viewer.State.update msg model.sampleViewer
-      { model with sampleViewer = sampleViewer }, Cmd.map SampleViewerMsg sampleViewerCmd

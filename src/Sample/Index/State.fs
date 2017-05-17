@@ -8,24 +8,6 @@ let sampleReferences =
     .Add(
       "sample-react-calc",
       { demoUrl = "https://fable-elmish.github.io/sample-react-calc/"
-        sourceUrl = "https://github.com/fable-elmish/sample-react-counter"
-        height = 300 }
-    )
-    .Add(
-      "sample-react-calc2",
-      { demoUrl = ""
-        sourceUrl = ""
-        height = 300 }
-    )
-    .Add(
-      "sample-react-calc2",
-      { demoUrl = ""
-        sourceUrl = ""
-        height = 300 }
-    )
-    .Add(
-      "sample-react-calc2",
-      { demoUrl = ""
-        sourceUrl = ""
-        height = 300 }
+        sourceUrl = "https://github.com/fable-elmish/sample-react-calc"
+        height = 500 }
     )
