@@ -79,4 +79,13 @@ Official documentation about elmish.
 Elmish is the part responsible of handling your **state** during the **life cicle** of your application.
               """
             url = "https://fable-elmish.github.io/elmish/"
+          }
+          { title = "Elmish-Browser"
+            description =
+              """
+Official documentation about elmish-browser.
+
+Elmish-browser implements **routing** and **navigation** for elmish apps targeting browser (React) renderers.
+              """
+            url = "https://fable-elmish.github.io/browser/"
           } ] ]

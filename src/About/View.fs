@@ -15,7 +15,6 @@ This website is written with:
 - [Elmish](https://github.com/fable-elmish/elmish) an Elm-like abstractions for F# applications targeting Fable.
 - [Bulma](http://bulma.io/) a modern CSS framework based on Flexbox.
 - [Marked](https://github.com/chjj/marked) a markdown parser and compiler.
-- [PrismJS](http://prismjs.com/) a lightweight, extensible syntax highlighter.
   "
 
 let root =
