@@ -56,7 +56,7 @@ let root (model: Page) =
                       [ ClassName "column" ]
                       [ ]
                     div
-                      [ ClassName "column" ]
+                      [ ClassName "column has-text-centered" ]
                       [ h1
                           [ ClassName "title" ]
                           [ str "Fable-Elmish"]
