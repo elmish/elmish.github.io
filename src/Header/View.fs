@@ -33,7 +33,7 @@ let footer model =
     [ div
         [ ClassName "container" ]
         [ nav
-            [ ClassName "tabs is-boxed" ]
+            [ ClassName "tabs is-boxed is-centered" ]
             [ footerLinks
                 [ { text = "Docs"
                     destination = Page.Docs }
@@ -54,6 +54,9 @@ let root (model: Page) =
                   [ ClassName "columns is-vcentered" ]
                   [ div
                       [ ClassName "column" ]
+                      [ ]
+                    div
+                      [ ClassName "column" ]
                       [ h1
                           [ ClassName "title" ]
                           [ str "Fable-Elmish"]
@@ -62,5 +65,8 @@ let root (model: Page) =
                           [ str "Everything you need to create a website using "
                             strong
                               []
-                              [ str "Elmish" ] ] ] ] ] ]
+                              [ str "Elmish" ] ] ]
+                    div
+                      [ ClassName "column" ]
+                      [ ] ] ] ]
         footer model ]
