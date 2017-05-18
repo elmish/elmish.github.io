@@ -69,8 +69,15 @@ let renderSection sectionInfo =
 let root =
   div
     [ ]
-    [ renderSection {
-        title = "Beginner"
+    [
+    // renderSection {
+    //     title = "Beginner"
+    //     samples =
+    //       [ ]
+    //   }
+      // hr []
+      renderSection {
+        title = "Medium"
         samples =
           [
             { title = "Calculator"
@@ -80,14 +87,8 @@ let root =
       }
       // hr []
       // renderSection {
-      //   title = "Medium"
-      //   samples =
-      //     [ ]
-      // }
-      // hr []
-      // renderSection {
       //   title = "Advanced"
       //   samples =
       //     [ ]
       // }
-      ]
+    ]
