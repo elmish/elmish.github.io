@@ -1,7 +1,8 @@
 // Colors
-$purple: #7a325d
-$primary: $purple
-$black: #202020
+$dark-blue: #2a6496
+$grey: #333333
+$blue: #028FCC
+$primary: $grey
 
 $fa-font-path: '../node_modules/sass-font-awesome/fonts'
 
@@ -9,35 +10,18 @@ $fa-font-path: '../node_modules/sass-font-awesome/fonts'
 @import '../node_modules/sass-font-awesome/font-awesome'
 
 .navbar-bg
-  background-color: $black
+  background-color: $blue
   .nav
-    background-color: $black
+    background-color: $blue
   .title
-    color: #686868
+    color: white
     font-weight: 600
-
-// Override bulma .number class for prismjs classes
-.number
-  align-items: center
-  background-color: $background
-  border-radius: 290486px
-  display: inline
-  font-size: 12px
-  height: 2em
-  justify-content: center
-  margin-right: 0em
-  min-width: 2.5em
-  padding: 0
-  text-align: center
-  vertical-align: top
 
 .twitter
   color: #55acee !important
-  border-color: #55acee !important
 
 .github
   color: black !important
-  border-color: black !important
 
 html
   font-size: 14px
@@ -51,3 +35,11 @@ body
 .sample-viewer
   width: 100%
   box-shadow: 0px 0px 2px $purple
+
+// Add style for Title inside tiles
+.tile
+  .title
+    a
+      color: $blue
+      &:hover
+        color: $dark-blue
