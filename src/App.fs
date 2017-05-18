@@ -22,7 +22,6 @@ let root model dispatch =
   let pageHtml =
     function
     | Page.About -> About.View.root
-    | Home -> Home.View.root
     | Docs ->
         Doc.Index.View.root
     | Samples (Some sampleKey) ->

@@ -10,8 +10,6 @@
     <Compile Include="src/Global.fs" />
     <!-- About -->
     <Compile Include="src/About/View.fs" />
-    <!-- Home -->
-    <Compile Include="src/Home/View.fs" />
     <!-- Doc -->
     <Compile Include="src/Doc/Index/Types.fs" />
     <Compile Include="src/Doc/Index/View.fs" />

@@ -4,7 +4,6 @@ open Fable.Core
 open Fable.Import
 
 type Page =
-  | Home
   | About
   | Docs
   | Samples of string option
@@ -12,7 +11,6 @@ type Page =
 let toHash page =
   match page with
   | About -> "#about"
-  | Home -> "#home"
   | Docs ->
       "#docs"
   | Samples (Some sampleKey) ->

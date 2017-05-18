@@ -11,11 +11,10 @@ open Types
 let pageParser: Parser<Page->Page,_> =
   oneOf [
     map About (s "about")
-    map Home (s "home")
     map Docs (s "docs")
     map (Some >> Samples) (s "samples" </> str)
     map (Samples None) (s "samples")
-    map Home top
+    map Docs top
   ]
 
 let urlUpdate (result: Option<Page>) model =
@@ -29,7 +28,7 @@ let urlUpdate (result: Option<Page>) model =
 let init result =
   let (model, cmd) =
     urlUpdate result
-      { currentPage = Home }
+      { currentPage = Docs }
   model, Cmd.batch [  cmd ]
 
 let update msg model =

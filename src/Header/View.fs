@@ -9,12 +9,8 @@ open Types
 let footerLinkItem menuLink currentPage =
   let isCurrentPage =
     match currentPage with
-    | Home | About ->
+    | About | Docs ->
         menuLink.destination = currentPage
-    | Docs _ ->
-        match menuLink.destination with
-        | Docs _ -> true
-        | _ -> false
     | Samples _ ->
         match menuLink.destination with
         | Samples _ -> true
@@ -39,9 +35,7 @@ let footer model =
         [ nav
             [ ClassName "tabs is-boxed" ]
             [ footerLinks
-                [ { text = "Home"
-                    destination = Page.Home }
-                  { text = "Docs"
+                [ { text = "Docs"
                     destination = Page.Docs }
                   { text = "Samples"
                     destination = Page.Samples None }
@@ -62,7 +56,7 @@ let root (model: Page) =
                       [ ClassName "column" ]
                       [ h1
                           [ ClassName "title" ]
-                          [ str "Documentation"]
+                          [ str "Fable-Elmish"]
                         h2
                           [ ClassName "subtitle" ]
                           [ str "Everything you need to create a website using "

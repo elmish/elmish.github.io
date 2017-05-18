@@ -38,5 +38,5 @@ let root =
                 [ Src "logo.png"
                   Alt "Elmish logo"
                   Style [ MarginRight "10px" ] ]
-              str "Elmish" ] ]
+              str "Fable-Elmish" ] ]
       navButtons ]
