@@ -6,4 +6,5 @@ type Msg =
   | NoOp
 
 type Model =
-  { currentPage: Page }
+  { currentPage: Page
+    docs : Doc.Index.Types.Model }

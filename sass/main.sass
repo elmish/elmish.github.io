@@ -1,8 +1,8 @@
 // Colors
-$dark-blue: #2a6496
+$dark-blue: #2D3947
 $grey: #333333
 $blue: #028FCC
-$primary: $grey
+$primary: $dark-blue
 
 $fa-font-path: '../node_modules/sass-font-awesome/fonts'
 
@@ -10,9 +10,9 @@ $fa-font-path: '../node_modules/sass-font-awesome/fonts'
 @import '../node_modules/sass-font-awesome/font-awesome'
 
 .navbar-bg
-  background-color: $blue
+  background-color: $dark-blue
   .nav
-    background-color: $blue
+    background-color: $dark-blue
   .title
     color: white
     font-weight: 600
@@ -31,6 +31,14 @@ html,
 body
   overflow-y: auto
   overflow-x: hidden
+
+.hero-body
+  padding: 1rem
+
+h2.subtitle
+  font: 400 50px/0.8 'Great Vibes', Helvetica, sans-serif
+  color: #fff
+  text-shadow: 4px 4px 3px rgba(0,0,0,0.4)
 
 .sample-viewer
   width: 100%

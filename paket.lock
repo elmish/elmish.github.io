@@ -22,7 +22,7 @@ NUGET
       Fable.PowerPack (>= 1.0.0-narumi-902) - framework: >= net463, >= netstandard16
       Fable.React (>= 1.0.0-narumi-902) - framework: >= net463, >= netstandard16
       FSharp.Core (>= 4.1.17) - framework: >= net463, >= netstandard16
-    Fable.PowerPack (1.0.0-narumi-902) - framework: >= net463, >= netstandard16
+    Fable.PowerPack (1.0.0-narumi-902)
       Fable.Core (>= 1.0.0-narumi-915) - framework: >= net463, >= netstandard16
       FSharp.Core (>= 4.1.17) - framework: >= net463, >= netstandard16
       NETStandard.Library (>= 1.6.1) - framework: >= net463, >= netstandard16

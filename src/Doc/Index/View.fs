@@ -14,12 +14,12 @@ let tileDocs tile =
         [ ClassName "tile is-parent is-vertical" ]
         [ article
             [ ClassName "tile is-child box" ]
-            [ p
+            [ div
                 [ ClassName "title" ]
                 [ a
                     [ Href info.url ]
                     [ str info.title ] ]
-              p
+              div
                 [ ClassName "subtitle" ]
                 [ div
                     [ ClassName "content"
@@ -67,25 +67,7 @@ let docsTiles tileList =
     [ tileVertical sections.left
       tileVertical sections.right ]
 
-let root =
+let root (model:Model) =
   div
     [ ClassName "section" ]
-    [ docsTiles
-        [ { title = "Elmish"
-            description =
-              """
-Official documentation about elmish.
-
-Elmish is the part responsible of handling your **state** during the **life cicle** of your application.
-              """
-            url = "https://fable-elmish.github.io/elmish/"
-          }
-          { title = "Elmish-Browser"
-            description =
-              """
-Official documentation about elmish-browser.
-
-Elmish-browser implements **routing** and **navigation** for elmish apps targeting browser (React) renderers.
-              """
-            url = "https://fable-elmish.github.io/browser/"
-          } ] ]
+    [ docsTiles model.index ]

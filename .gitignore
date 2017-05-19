@@ -2,7 +2,10 @@
 node_modules/
 bin/
 obj/
+packages/
 
 # Ignore webpack generated files
 dist/
-packages/
+
+# other
+.DS_Store

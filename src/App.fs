@@ -17,13 +17,13 @@ importAll "../sass/main.sass"
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
 
-let root model dispatch =
+let root (model:Model) dispatch =
 
   let pageHtml =
     function
     | Page.About -> About.View.root
     | Docs ->
-        Doc.Index.View.root
+        Doc.Index.View.root model.docs
     | Samples (Some sampleKey) ->
         Sample.Viewer.View.root sampleKey // TODO: use height
     | Samples _ ->

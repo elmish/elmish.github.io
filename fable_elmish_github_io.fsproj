@@ -12,6 +12,7 @@
     <Compile Include="src/About/View.fs" />
     <!-- Doc -->
     <Compile Include="src/Doc/Index/Types.fs" />
+    <Compile Include="src/Doc/Index/State.fs" />
     <Compile Include="src/Doc/Index/View.fs" />
     <!-- Sample -->
     <Compile Include="src/Sample/Index/Types.fs" />

@@ -44,29 +44,17 @@ let footer model =
                 model ] ] ]
 
 let root (model: Page) =
-    section
+    div
       [ ClassName "hero is-primary" ]
       [ div
           [ ClassName "hero-body" ]
           [ div
-              [ ClassName "container" ]
+              [ ClassName "column has-text-centered" ]
               [ div
-                  [ ClassName "columns is-vcentered" ]
+                  [ ]
                   [ div
-                      [ ClassName "column" ]
-                      [ ]
-                    div
-                      [ ClassName "column has-text-centered" ]
-                      [ h1
-                          [ ClassName "title" ]
-                          [ str "Fable-Elmish"]
-                        h2
+                      []
+                      [ h2
                           [ ClassName "subtitle" ]
-                          [ str "Everything you need to create a website using "
-                            strong
-                              []
-                              [ str "Elmish" ] ] ]
-                    div
-                      [ ClassName "column" ]
-                      [ ] ] ] ]
+                          [ str "Fable applications following \"model view update\" architecture" ] ] ] ] ]
         footer model ]

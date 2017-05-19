@@ -4,7 +4,7 @@ open Fable.Helpers.React
 open Fable.Helpers.React.Props
 
 let navButton classy href faClass txt =
-  p
+  div
     [ ClassName "control" ]
     [ a
         [ ClassName (sprintf "button %s" classy)
@@ -25,10 +25,10 @@ let navButtons =
         [ ClassName "field is-grouped" ]
         [ navButton "twitter" "https://twitter.com/FableCompiler" "fa-twitter" "Twitter"
           navButton "github" "https://github.com/fable-elmish" "fa-github" "Github"
-          navButton "github" "https://gitter.im/fable-compiler/Fable" "fa-comments" "Gitter" ] ]
+          navButton "github" "https://gitter.im/fable-compiler/Fable" "fa-comments" "Gitter" ]]
 
 let root =
-  nav
+  div
     [ ClassName "nav" ]
     [ div
         [ ClassName "nav-left" ]
@@ -36,7 +36,7 @@ let root =
             [ ClassName "nav-item is-brand title is-4" ]
             [ img
                 [ Src "logo.png"
-                  Alt "Elmish logo"
+                  Alt "logo"
                   Style [ MarginRight "10px" ] ]
-              str "Fable-Elmish" ] ]
+              str "fable-elmish" ] ]
       navButtons ]

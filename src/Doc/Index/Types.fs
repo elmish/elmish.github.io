@@ -18,3 +18,7 @@ type SectionInfo =
   static member Empty =
     { left = []
       right = [] }
+
+  
+type Model =
+  { index : TileInfo list }
