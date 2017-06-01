@@ -9,6 +9,13 @@ $fa-font-path: '../node_modules/sass-font-awesome/fonts'
 @import '../node_modules/bulma/bulma'
 @import '../node_modules/sass-font-awesome/font-awesome'
 
+@font-face
+  font-family: 'cookieregular'
+  src: url('../fonts/cookie-regular-webfont.woff2') format('woff2'), url('../fonts/cookie-regular-webfont.woff') format('woff')
+  font-weight: normal
+  font-style: normal
+
+
 .navbar-bg
   background-color: $dark-blue
   .nav
@@ -36,7 +43,7 @@ body
   padding: 1rem
 
 h2.subtitle
-  font: 400 50px/0.8 'Cookie', Helvetica, sans-serif
+  font: 400 50px/0.8 'cookieregular', Helvetica, sans-serif
   color: #fff
   text-shadow: 4px 4px 3px rgba(0,0,0,0.4)
 
