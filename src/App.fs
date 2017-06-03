@@ -23,11 +23,14 @@ let root (model:Model) dispatch =
     function
     | Page.About -> About.View.root
     | Docs ->
-        Doc.Index.View.root model.docs
+        Doc.Index.View.view model.docs
     | Samples (Some sampleKey) ->
-        Sample.Viewer.View.root sampleKey // TODO: use height
+        model.samples.index 
+        |> List.collect (fun c -> c.samples) 
+        |> List.tryFind (fun s -> s.title = sampleKey)
+        |> Sample.Viewer.View.view  // TODO: use height
     | Samples _ ->
-        Sample.Index.View.root
+        Sample.Index.View.view model.samples
 
   div
     []

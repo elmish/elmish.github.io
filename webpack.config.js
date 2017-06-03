@@ -1,6 +1,9 @@
 var path = require("path");
+var fs = require("fs");
 var webpack = require("webpack");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var extractTextPlugin = require("extract-text-webpack-plugin");
+var autoprefixer = require('autoprefixer');
+var copyWebpackPlugin = require('copy-webpack-plugin');
 
 function resolve(filePath) {
   return path.join(__dirname, filePath)
@@ -11,18 +14,73 @@ var babelOptions = {
   plugins: ["transform-runtime"]
 }
 
+var out_path = resolve("./build");
+
 var isProduction = process.argv.indexOf("-p") >= 0;
 console.log("Bundling for " + (isProduction ? "production" : "development") + "...");
 
+var entry = isProduction 
+  ? { vendor: [ 
+        'react',
+        'react-dom',
+        'whatwg-fetch',
+      ],
+      main: resolve('./fable_elmish_github_io.fsproj') }
+  : resolve('./fable_elmish_github_io.fsproj');
+
+var output = isProduction 
+  ? { publicPath: "/",
+      path: out_path,
+      filename: '[chunkhash].[name].js' }
+  : { filename: 'main.js',
+      path: out_path }
+
+var plugins = isProduction
+  ? [
+      new webpack.optimize.CommonsChunkPlugin({
+          names: ['vendor','manifest'] // Specify the common bundle names.
+      }),
+      new copyWebpackPlugin([
+          { from: 'public' }
+      ]),
+      new extractTextPlugin("styles.css"),
+      function () {
+          this.plugin("done", function (stats) {
+              var replaceInFile = function (filePath, replacements) {
+                  var str = fs.readFileSync(filePath, 'utf8');
+                  replacements.forEach(function ({toReplace,replacement}) {
+                    var replacer = function (match) {
+                        console.log('Replacing in %s: %s => %s', filePath, match, replacement);
+                        return './' + replacement;
+                    };
+                    str = str.replace(new RegExp(toReplace, 'g'), replacer);
+                  });
+                  fs.writeFileSync(filePath, str);
+              };
+              var assetsByChunkName = stats.toJson().assetsByChunkName;
+              var regexStr = function (chunk) {
+                  return '\.\/([a-z0-9]*\.{0,1})' + chunk + '\.js';
+              }
+              replaceInFile(path.join(out_path, 'index.html'),
+                [ {toReplace: regexStr('main'), replacement: assetsByChunkName.main[0]},
+                  {toReplace: regexStr('manifest'), replacement: assetsByChunkName.manifest[0]},
+                  {toReplace: regexStr('vendor'), replacement: assetsByChunkName.vendor[0]} ]
+              );
+          });
+      }
+    ]
+  : [ new copyWebpackPlugin([
+          { from: 'public' }
+      ]),
+      new extractTextPlugin("styles.css")
+    ];
+
 module.exports = {
   devtool: "source-map",
-  entry: resolve('./fable_elmish_github_io.fsproj'),
-  output: {
-    filename: 'dist/bundle.js',
-    path: resolve('./public'),
-  },
+  entry:  entry,
+  output: output,
   devServer: {
-    contentBase: resolve('./public'),
+    contentBase: out_path,
     port: 8080
   },
   module: {
@@ -54,7 +112,7 @@ module.exports = {
       },
       {
         test: /\.sass$/,
-        loader: ExtractTextPlugin.extract({
+        loader: extractTextPlugin.extract({
           fallbackLoader: "style-loader",
           loader: "css-loader!sass-loader",
         }),
@@ -64,14 +122,12 @@ module.exports = {
         use: {
           loader: 'file-loader',
           query: {
-            name: "dist/fonts/[name].[ext]",
-            publicPath: "../"
+            name: "fonts/[name].[ext]",
+            publicPath: "./"
           }
         },
       }
     ]
   },
-  plugins: [
-    new ExtractTextPlugin("dist/styles.css")
-  ]
+  plugins: plugins
 };

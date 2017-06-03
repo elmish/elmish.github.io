@@ -67,7 +67,7 @@ let docsTiles tileList =
     [ tileVertical sections.left
       tileVertical sections.right ]
 
-let root (model:Model) =
+let view (model:Model) =
   div
     [ ClassName "section" ]
     [ docsTiles model.index ]

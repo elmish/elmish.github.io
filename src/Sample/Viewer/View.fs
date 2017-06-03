@@ -4,11 +4,10 @@ open Fable.Import
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Global
+open Sample.Index.Types
 
-let root reference =
-
-    let sampleReference = Sample.Index.State.sampleReferences.TryFind reference
-    match sampleReference with
+let view (reference:SampleReference option) =
+    match reference with
     | None ->
       article
         [ ClassName "message is-danger" ]

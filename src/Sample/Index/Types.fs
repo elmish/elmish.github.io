@@ -2,20 +2,16 @@ module Sample.Index.Types
 
 open Global
 
-type SampleInfo =
-  { title: string
-    description: string
-    sampleKey: string }
-
 type SampleReference =
   { demoUrl: string
+    title: string
+    description: string
     sourceUrl: string
     height: int }
 
-type Sample =
-  | Tile of SampleInfo
-  | Placeholder
-
 type SectionInfo =
   { title: string
-    samples: SampleInfo list }
+    samples: SampleReference list }
+
+type Model =
+  { index: SectionInfo list }

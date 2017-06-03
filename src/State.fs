@@ -29,7 +29,8 @@ let init result =
   let (model, cmd) =
     urlUpdate result
       { currentPage = Docs
-        docs = Doc.Index.State.init () }
+        docs = Doc.Index.State.init ()
+        samples = Sample.Index.State.init () }
   model, Cmd.batch [  cmd ]
 
 let update msg model =

@@ -6,6 +6,11 @@ open Fable.Helpers.React.Props
 open Global
 open Types
 
+
+type Sample =
+  | Tile of SampleReference
+  | Placeholder
+
 let tileDocs tile =
   match tile with
   | Tile info ->
@@ -16,12 +21,11 @@ let tileDocs tile =
             [ p
                 [ ClassName "title" ]
                 [ a
-                    [ Href (toHash ((info.sampleKey) |> (Some >> Samples))) ]
+                    [ Href (toHash ((info.title) |> (Some >> Samples))) ]
                     [ str info.title ] ]
               p
                 [ ClassName "subtitle" ]
                 [ str info.description ] ] ]
-  // Render an empty tile
   | Placeholder ->
       div
         [ ClassName "tile is-parent is-vertical" ]
@@ -64,31 +68,9 @@ let renderSection sectionInfo =
       div
         [ ClassName "tile is-ancestor" ]
         [ tileVertical leftSection
-          tileVertical rightSection ] ]
+          tileVertical rightSection ] 
+      br [] ]
 
-let root =
-  div
-    [ ]
-    [
-    // renderSection {
-    //     title = "Beginner"
-    //     samples =
-    //       [ ]
-    //   }
-      // hr []
-      renderSection {
-        title = "Medium"
-        samples =
-          [
-            { title = "Calculator"
-              description = "A simple calculator made with Elmish and React"
-              sampleKey = "sample-react-calc" }
-          ]
-      }
-      // hr []
-      // renderSection {
-      //   title = "Advanced"
-      //   samples =
-      //     [ ]
-      // }
-    ]
+let view (model:Model) =
+  div [] (model.index |> List.map renderSection)
+    

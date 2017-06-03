@@ -1,11 +1,13 @@
 // include Fake libs
-#r "./packages/FAKE/tools/FakeLib.dll"
+#r "./packages/build/FAKE/tools/FakeLib.dll"
 #r "System.IO.Compression.FileSystem"
 
 open System
 open System.IO
 open Fake
 open Fake.NpmHelper
+open Fake.Git
+
 
 let yarn = 
     if EnvironmentHelper.isWindows then "yarn.cmd" else "yarn"
@@ -14,13 +16,9 @@ let yarn =
        | Some yarn -> yarn
        | ex -> failwith ( sprintf "yarn not found (%A)\n" ex )
 
-// Directories
-let buildDir  = "./build/"
- 
-// Filesets
-let projects  =
-      !! "src/*/*.proj"
-
+let gitName = "fable-elmish.github.io"
+let gitOwner = "fable-elmish"
+let gitHome = sprintf "https://github.com/%s" gitOwner
 
 let dotnetcliVersion = "1.0.1"
 let mutable dotnetExePath = "dotnet"
@@ -87,38 +85,62 @@ Target "InstallDotNetCore" (fun _ ->
         |> Seq.iter (fun path -> tracefn " - %s%c" path System.IO.Path.DirectorySeparatorChar)
 
         dotnetExePath <- dotnetSDKPath </> (if isWindows then "dotnet.exe" else "dotnet")
-
-    // let oldPath = System.Environment.GetEnvironmentVariable("PATH")
-    // System.Environment.SetEnvironmentVariable("PATH", sprintf "%s%s%s" dotnetSDKPath (System.IO.Path.PathSeparator.ToString()) oldPath)
 )
 
+
+Target "Clean" (fun _ ->
+    CleanDir "build"
+)
 
 Target "Install" (fun _ ->
-    projects
-    |> Seq.iter (fun s -> 
-        let dir = IO.Path.GetDirectoryName s
-        printf "Installing: %s\n" dir
-        runDotnet dir "restore"
-    )
-)
-
-// Targets
-Target "Clean" (fun _ ->
-    CleanDirs [buildDir]
+    Npm (fun p ->
+        { p with
+            NpmFilePath = yarn
+            Command = Install Standard
+        })
+    runDotnet "." "restore"
 )
 
 Target "Build" (fun _ ->
-    projects
-    |> Seq.iter (fun s -> 
-        let dir = IO.Path.GetDirectoryName s
-        runDotnet dir "pack")
+    runDotnet "." "fable npm-run build"
 )
+
+Target "Watch" (fun _ ->
+    runDotnet "." "fable npm-run start"
+)
+
+// --------------------------------------------------------------------------------------
+// Release Scripts
+
+Target "ReleaseSite" (fun _ ->
+    let tempDocsDir = "temp/master"
+    CleanDir tempDocsDir
+    Repository.cloneSingleBranch "" (gitHome + "/" + gitName + ".git") "master" tempDocsDir
+
+    CopyRecursive "build" tempDocsDir true |> tracefn "%A"
+
+    StageAll tempDocsDir
+    Git.Commit.Commit tempDocsDir (sprintf "Update generated site")
+    Branches.push tempDocsDir
+)
+
+Target "Publish" DoNothing
 
 // Build order
 "Clean"
   ==> "InstallDotNetCore"
   ==> "Install"
   ==> "Build"
+
+"Clean"
+  ==> "InstallDotNetCore"
+  ==> "Install"
+  ==> "Watch"
+  
+"Publish"
+  <== [ "Build"
+        "ReleaseSite" ]
+  
   
 // start build
 RunTargetOrDefault "Build"

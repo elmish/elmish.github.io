@@ -5,7 +5,9 @@ obj/
 packages/
 
 # Ignore webpack generated files
-dist/
+build/
 
 # other
 .DS_Store
+.fake
+temp

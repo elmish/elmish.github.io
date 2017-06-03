@@ -7,4 +7,5 @@ type Msg =
 
 type Model =
   { currentPage: Page
-    docs : Doc.Index.Types.Model }
+    docs : Doc.Index.Types.Model 
+    samples : Sample.Index.Types.Model }
