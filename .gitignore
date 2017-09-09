@@ -11,3 +11,4 @@ build/
 .DS_Store
 .fake
 temp
+paket-files

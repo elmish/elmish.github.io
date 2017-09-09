@@ -131,7 +131,7 @@
     </ItemGroup>
 
     <PropertyGroup>
-      <PaketCliToolFilePath>$(MSBuildProjectDirectory)/obj/$(MSBuildProjectFile).paket.clitools</PaketCliToolFilePath>
+      <RestoreConfigFile>$(MSBuildProjectDirectory)/obj/$(MSBuildProjectFile).NuGet.Config</RestoreConfigFile>
     </PropertyGroup>
 
     <ReadLinesFromFile File="$(PaketCliToolFilePath)" >

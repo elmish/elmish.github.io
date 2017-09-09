@@ -4,11 +4,12 @@ storage:none
 
 nuget FSharp.Core  redirects:force, content:none
 nuget Fable.Core
-nuget Fable.React
-nuget Fable.Elmish
-nuget Fable.Elmish.React
-nuget Fable.Elmish.Browser
-nuget Fable.Elmish.Debugger
+nuget Fable.React 1.2.0-beta-003
+nuget Fable.Elmish 1.0.0-beta-1
+nuget Fable.Elmish.React 1.0.0-beta-1
+nuget Fable.Elmish.Browser 1.0.0-beta-1
+nuget Fable.Elmish.Debugger 1.0.0-beta-1
+clitool dotnet-fable
 
 clitool dotnet-fable
 
