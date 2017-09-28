@@ -9,7 +9,7 @@ open Fake.NpmHelper
 open Fake.Git
 
 
-let yarn = 
+let yarn =
     if EnvironmentHelper.isWindows then "yarn.cmd" else "yarn"
     |> ProcessHelper.tryFindFileOnPath
     |> function
@@ -20,7 +20,7 @@ let gitName = "fable-elmish.github.io"
 let gitOwner = "fable-elmish"
 let gitHome = sprintf "https://github.com/%s" gitOwner
 
-let dotnetcliVersion = "1.0.1"
+let dotnetcliVersion = "2.0.0"
 let mutable dotnetExePath = "dotnet"
 
 let runDotnet workingDir =
@@ -79,11 +79,11 @@ Target "Publish" DoNothing
   ==> "InstallDotNetCore"
   ==> "Install"
   ==> "Watch"
-  
+
 "Publish"
   <== [ "Build"
         "ReleaseSite" ]
-  
-  
+
+
 // start build
 RunTargetOrDefault "Build"

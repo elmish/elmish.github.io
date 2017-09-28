@@ -3,7 +3,7 @@ module Doc.Index.State
 open Types
 
 let init () =
-    { index = 
+    { index =
         [ { title = "elmish"
             description =
               """
@@ -27,4 +27,10 @@ Time-traveling **debugger** and **import/export** for fable-elmish applications.
               """
 Build **React** and **ReactNative** apps with elmish.
               """
-            url = "https://fable-elmish.github.io/react/" } ] }
+            url = "https://fable-elmish.github.io/react/" }
+          { title = "elmish-hmr"
+            description =
+              """
+**Hot Module Replacement** for Elmish apps
+              """
+            url = "https://fable-elmish.github.io/hmr/" } ] }
