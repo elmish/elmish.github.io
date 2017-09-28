@@ -12,7 +12,7 @@ let navButton classy href faClass txt =
         [ span
             [ ClassName "icon" ]
             [ i
-                [ ClassName (sprintf "fa %s" faClass) ]
+                [ ClassName (sprintf "fa fa-lg %s" faClass) ]
                 [ ] ]
           span
             [ ]
