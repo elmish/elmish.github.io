@@ -17,7 +17,7 @@ let view (reference:SampleReference option) =
               br [ ]
               str "If the problem persist please "
               a
-                [ Href "https://github.com/fable-elmish/fable-elmish.github.io" ]
+                [ Href "https://github.com/elmish/elmish.github.io" ]
                 [ str "open an issue." ] ] ]
     | Some sample ->
         div

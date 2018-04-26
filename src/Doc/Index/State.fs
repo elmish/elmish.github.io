@@ -9,28 +9,28 @@ let init () =
               """
 Defines core abstractions that can be used to build Fable applications following **model view update** style of architecture.
               """
-            url = "https://fable-elmish.github.io/elmish/" }
+            url = "https://elmish.github.io/elmish/" }
           { title = "elmish-browser"
             description =
               """
 Implements **routing** and **navigation** for elmish apps targeting browser (SPAs).
               """
-            url = "https://fable-elmish.github.io/browser/" }
+            url = "https://elmish.github.io/browser/" }
           { title = "elmish-debugger"
             description =
               """
-Time-traveling **debugger** and **import/export** for fable-elmish applications.
+Time-traveling **debugger** and **import/export** for elmish applications.
               """
-            url = "https://fable-elmish.github.io/debugger/" }
+            url = "https://elmish.github.io/debugger/" }
           { title = "elmish-react"
             description =
               """
 Build **React** and **ReactNative** apps with elmish.
               """
-            url = "https://fable-elmish.github.io/react/" }
+            url = "https://elmish.github.io/react/" }
           { title = "elmish-hmr"
             description =
               """
 **Hot Module Replacement** for Elmish apps
               """
-            url = "https://fable-elmish.github.io/hmr/" } ] }
+            url = "https://elmish.github.io/hmr/" } ] }

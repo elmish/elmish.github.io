@@ -16,11 +16,11 @@ let yarn =
        | Some yarn -> yarn
        | ex -> failwith ( sprintf "yarn not found (%A)\n" ex )
 
-let gitName = "fable-elmish.github.io"
-let gitOwner = "fable-elmish"
+let gitName = "elmish.github.io"
+let gitOwner = "elmish"
 let gitHome = sprintf "https://github.com/%s" gitOwner
 
-let dotnetcliVersion = "2.0.0"
+let dotnetcliVersion = DotNetCli.GetDotNetSDKVersionFromGlobalJson()
 let mutable dotnetExePath = "dotnet"
 
 let runDotnet workingDir =
@@ -45,11 +45,11 @@ Target "Install" (fun _ ->
 )
 
 Target "Build" (fun _ ->
-    runDotnet "." "fable npm-run build"
+    runDotnet "." "fable yarn-run build"
 )
 
 Target "Watch" (fun _ ->
-    runDotnet "." "fable npm-run start"
+    runDotnet "." "fable yarn-run start"
 )
 
 // --------------------------------------------------------------------------------------

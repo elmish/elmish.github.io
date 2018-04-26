@@ -26,8 +26,8 @@ var entry = isProduction
         'react-dom',
         'whatwg-fetch'
       ],
-      main: resolve('./fable_elmish_github_io.fsproj') }
-  : resolve('./fable_elmish_github_io.fsproj');
+      main: resolve('./elmish_github_io.fsproj') }
+  : resolve('./elmish_github_io.fsproj');
 
 var output = isProduction
   ? { publicPath: "/",

@@ -24,7 +24,7 @@ let navButtons =
     [ div
         [ ClassName "field is-grouped" ]
         [ navButton "twitter" "https://twitter.com/FableCompiler" "fa-twitter" "Twitter"
-          navButton "github" "https://github.com/fable-elmish" "fa-github" "Github"
+          navButton "github" "https://github.com/elmish" "fa-github" "Github"
           navButton "github" "https://gitter.im/fable-compiler/Fable" "fa-comments" "Gitter" ]]
 
 let root =
@@ -38,5 +38,5 @@ let root =
                 [ Src "logo.png"
                   Alt "logo"
                   Style [ MarginRight "10px" ] ]
-              str "fable-elmish" ] ]
+              str "elmish" ] ]
       navButtons ]
