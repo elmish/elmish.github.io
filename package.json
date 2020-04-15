@@ -14,7 +14,7 @@
     "babel-runtime": "^6.26.0",
     "font-awesome": "^4.7.0",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react-dom": "^16.0.1",
     "remotedev": "^0.2.7",
     "sass-font-awesome": "^1.0.2"
   },
