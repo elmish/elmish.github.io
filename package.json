@@ -8,6 +8,7 @@
   },
   "scripts": {
     "docs:watch": "nacara watch",
+    "docs:build": "nacara build",
     "docs:publish": "nacara build && gh-pages -d docs_deploy"
   },
   "devDependencies": {
