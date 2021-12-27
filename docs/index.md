@@ -136,7 +136,7 @@ let update model msg =
 
 <hr>
 
-<section class="section mb-6">
+<section class="section">
 
 <h2 class="title has-text-centered mb-6">Developper experience</h2>
 
@@ -164,6 +164,46 @@ let update model msg =
                 <h3>Debugger</h3>
                 <p>
                 Observe the state of your application in real time.
+                </p>
+            </a>
+        </div>
+    </div>
+</div>
+
+</section>
+
+<hr>
+
+<section class="section">
+
+<h2 class="title has-text-centered">Examples</h2>
+
+
+<div class="feature-grid container">
+    <div class="feature-header">
+    </div>
+    <div class="feature-grid-features">
+        <div>
+            <a href="https://elmish.github.io/sample-react-counter/">
+                <h3>Counter</h3>
+                <p>
+                A simple application showing how the Model View Update pattern works.
+                </p>
+            </a>
+        </div>
+        <div>
+            <a href="https://elmish.github.io/sample-react-navigation/#home">
+                <h3>Navigation</h3>
+                <p>
+                Show how to handle navigation using Elmish.Browser.
+                </p>
+            </a>
+        </div>
+        <div>
+            <a href="https://elmish.github.io/sample-react-todomvc/">
+                <h3>Todo</h3>
+                <p>
+                An intermediate application demonstrating the Model View Update pattern.
                 </p>
             </a>
         </div>
