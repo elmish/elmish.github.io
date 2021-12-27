@@ -1,0 +1,96 @@
+.selling-points {
+
+    .selling-point {
+
+        &:not(:last-child) {
+            margin-bottom: 3rem;
+        }
+
+        max-width: 1024px;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        flex-wrap: wrap;
+
+        .selling-point-header,
+        .selling-point-showcase {
+            padding: 1rem;
+            width: 45%;
+            margin: auto 0;
+
+            @include touch {
+                width: 100%;
+            }
+        }
+
+        &:not(.is-fullwidth) {
+            .selling-point-header {
+                margin-right: 5%;
+
+                @include touch {
+                    margin-right: 0;
+                }
+            }
+
+            .selling-point-showcase {
+                margin-left: 5%;
+
+                @include touch {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        &.is-fullwidth {
+            @include desktop {
+                .selling-point-header,
+                .selling-point-showcase {
+                    width: 80%;
+                }
+            }
+
+        }
+
+    }
+}
+
+.feature-grid {
+
+    .feature-header {
+        font-weight: $weight-bold;
+    }
+
+    .feature-grid-features {
+
+        display: grid;
+        column-gap: 90px;
+        grid-template-columns: minmax(0,500px) minmax(0,500px);
+        justify-content: center;
+
+        h3 {
+            font-weight: $weight-bold;
+            font-size: $size-4;
+        }
+
+        div {
+            padding: 2rem;
+            border-radius: $radius;
+            a {
+                color: $text !important;
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: $white-ter;
+                transform: translateY(-0.25rem);
+                transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 150ms;
+                transition-timing-function: linear;
+                box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(0 25px 50px -12px rgba(0, 0, 0, 0.25));
+            }
+
+        }
+    }
+
+}

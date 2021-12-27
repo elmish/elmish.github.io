@@ -1,8 +1,8 @@
-## Build and running the app
+## Development
 
-1. Install npm dependencies: `yarn install`
-2. Install dotnet dependencies: `dotnet restore`
-3. Start Fable server and Webpack dev server: `dotnet fable npm-run start`
-4. In your browser, open: [http://localhost:8080/](http://localhost:8080/)
+This repository use NPM scripts to control the build system here is a list of the main scripts available:
 
-Any modification you do to the F# code will be reflected in the web page after saving.
+| Script | Description |
+|---|---|
+| `npm run docs:watch` | To use when working on the documentation, hosted on [http://localhost:8080](http://localhost:8080) |
+| `npm run docs:publish` | Build a new version of the documentation and publish it to Github Pages |
