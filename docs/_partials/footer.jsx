@@ -40,17 +40,12 @@ export default (
                 <SitemapSectionItem
                     text="Repository"
                     icon="fas fa-file-code"
-                    url="https://github.com/elmish/urlParser" />
-
-                <SitemapSectionItem
-                    text="Release notes"
-                    icon="fas fa-list"
-                    url="/urlParser/release_notes.html" />
+                    url="https://github.com/elmish/elmish.github.io" />
 
                 <SitemapSectionItem
                     text="License"
                     icon="fas fa-id-card"
-                    url="https://github.com/elmish/urlParser/blob/master/LICENSE.md" />
+                    url="https://github.com/elmish/elmish.github.io/blob/source/LICENSE.md" />
             </SitemapSection>
 
             <SitemapSection title="Elmish modules">
