@@ -12,3 +12,6 @@ build/
 .fake
 temp
 paket-files
+
+.nacara
+docs_deploy
