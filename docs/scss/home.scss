@@ -67,6 +67,11 @@
         grid-template-columns: minmax(0,500px) minmax(0,500px);
         justify-content: center;
 
+        @include mobile {
+            grid-template-columns: 1fr;
+            grid-gap: 1rem;
+        }
+
         h3 {
             font-weight: $weight-bold;
             font-size: $size-4;
