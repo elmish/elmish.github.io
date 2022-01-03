@@ -138,7 +138,7 @@ let update model msg =
 
 <section class="section">
 
-<h2 class="title has-text-centered mb-6">Developper experience</h2>
+<h2 class="title has-text-centered mb-6">Developer experience</h2>
 
 
 <div class="feature-grid container">
