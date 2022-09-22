@@ -31,6 +31,9 @@ Elmish define a core abstractions allowing you to build Fable application follow
     <div class="selling-point-showcase content">
 
 ```fs
+open Feliz
+open Elmish
+
 type Model =
     { Value : string }
 
@@ -79,6 +82,8 @@ Build **React** and **ReactNative** apps with elmish.
     <div class="selling-point-showcase content">
 
 ```fs
+open Feliz
+
 let view model dispatch =
     Html.div [
         Html.input [
@@ -113,6 +118,7 @@ Implements **routing** and **navigation** for elmish apps targeting browser (SPA
     <div class="selling-point-showcase content">
 
 ```fs
+open Elmish
 // Make the program support navigation
 open Elmish.Navigation
 
