@@ -22,7 +22,7 @@ layout: navbar-only
         </h4>
         <div class="content is-size-5 mb-3">
 
-Elmish define a core abstractions allowing you to build Fable application following the **model view update** style of architecture.
+Elmish defines core abstractions allowing you to build Fable applications following the **model view update** style of architecture.
         </div>
         <a href="https://elmish.github.io/elmish/">
             Learn more →
