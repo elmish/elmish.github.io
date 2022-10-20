@@ -36,7 +36,7 @@ const CopyrightScript = () => (
 export default (
     <div className="is-size-5">
         <div className="sitemap">
-            <SitemapSection title="Project ressources">
+            <SitemapSection title="Project resources">
                 <SitemapSectionItem
                     text="Repository"
                     icon="fas fa-file-code"
