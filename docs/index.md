@@ -109,7 +109,7 @@ let view model dispatch =
         </h4>
         <div class="content is-size-5 mb-3">
 
-Implements **routing** and **navigation** for elmish apps targeting browser (SPAs).
+Implements **routing** and **navigation** for elmish apps targeting the browser (SPAs).
         </div>
         <a href="https://elmish.github.io/browser/">
             Learn more →
