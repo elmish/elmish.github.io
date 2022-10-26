@@ -22,7 +22,7 @@ layout: navbar-only
         </h4>
         <div class="content is-size-5 mb-3">
 
-Elmish define a core abstractions allowing you to build Fable application following the **model view update** style of architecture.
+Elmish provides core abstractions that you can use to build F# applications following the **model view update** style of architecture.
         </div>
         <a href="https://elmish.github.io/elmish/">
             Learn more →
@@ -109,7 +109,7 @@ let view model dispatch =
         </h4>
         <div class="content is-size-5 mb-3">
 
-Implements **routing** and **navigation** for elmish apps targeting browser (SPAs).
+Implements **routing** and **navigation** for elmish apps targeting the browser (SPAs).
         </div>
         <a href="https://elmish.github.io/browser/">
             Learn more →

@@ -36,7 +36,7 @@ const CopyrightScript = () => (
 export default (
     <div className="is-size-5">
         <div className="sitemap">
-            <SitemapSection title="Project ressources">
+            <SitemapSection title="Project Resources">
                 <SitemapSectionItem
                     text="Repository"
                     icon="fas fa-file-code"
@@ -48,7 +48,7 @@ export default (
                     url="https://github.com/elmish/elmish.github.io/blob/source/LICENSE.md" />
             </SitemapSection>
 
-            <SitemapSection title="Elmish modules">
+            <SitemapSection title="Elmish Modules">
                 <SitemapSectionItem
                     text="Fable.Elmish"
                     icon="fa fa-book"
